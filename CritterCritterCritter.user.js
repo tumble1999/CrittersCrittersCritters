@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CritterCritterCritter
 // @namespace
-// @version      1.0.1
+// @version      1.1.0
 // @description  Adds a few new features to BoxCritters to improve your experience!
 // @author       Blackout03, with some help from codejk and slaggo
 // @match        https://boxcritters.com/play/*
