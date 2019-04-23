@@ -210,6 +210,7 @@ window.addEventListener('load', function() {
         world.sendMessage("/thekeeper"); // Redeems Party Hat
         world.sendMessage("/3dboxcritters"); // Redeems Black 3D Glasses
         world.sendMessage("/bunnyhug"); // Redeems Black 3D Glasses
+        world.sendMessage("/explore"); // Redeems Red Plaid Shirt
     }
 
     function freeitem() {
