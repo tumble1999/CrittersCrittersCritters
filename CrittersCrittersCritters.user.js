@@ -179,4 +179,4 @@ window.addEventListener('load', function() {
         freeitemBtn.addEventListener ("click", freeitem, false);
     }
 
-}, false);
+}, true);
