@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         CritterCritterCritter
 // @namespace
-// @version      1.1.0
+// @version      1.4.0
 // @description  Adds a few new features to BoxCritters to improve your experience!
-// @author       Blackout03, with some help from codejk and slaggo
+// @author       Blackout03, with some help from CrittersPlus made by slaggo
 // @match        https://boxcritters.com/play/*
 // @match        http://boxcritters.com/play/*
 // @icon         https://cdn.discordapp.com/attachments/395187780600201217/570214992100720640/CustomBeaverTwitter.png
@@ -53,52 +53,29 @@ window.addEventListener('load', function() {
     var chatBar = document.getElementsByClassName("input-group")[0];
     var chatBox = document.getElementsByClassName("row justify-content-center")[1];
     var jokeBtnHTML = `<span class="input-group-btn"><button id="jokebtn" class="btn btn-success">Joke</button></span>`;
-    var clapBtnHTML = `<span class="input-group-btn"><button id="clapbtn" class="btn btn-warning">Snap</button></span>`;
+    var clapBtnHTML = `<span class="input-group-btn"><button id="clapbtn" class="btn btn-warning">Clap</button></span>`;
     var balloonoffBtnHTML = `<span class="input-group-btn"><button id="balloonoffbtn" class="btn btn-info">Chat Balloons On/Off</button></span>`;
     var nametagsonoffBtnHTML = `<span class="input-group-btn"><button id="nametagsonoffbtn" class="btn btn-info">Name Tags On/Off</button></span>`;
-    var mountainmodeHTML = `<div id="mmDiv" class="row justify-content-center"><span><input class="form-check-input" type="checkbox" value="" id="mountainmode"><label class="form-check-label" for="mountainmode" style="color:#000000;">Mountain Mode</label></span></div>`;
-    var sandymodeHTML = `<div id="smDiv" class="row justify-content-center"><span><input class="form-check-input" type="checkbox" value="" id="sandymode"><label class="form-check-label" for="sandymode" style="color:#000000;">Sandy Mode</label></span></div>`;
-    var prehistoricmodeHTML = `<div id="pmDiv" class="row justify-content-center"><span><input class="form-check-input" type="checkbox" value="" id="prehistoricmode"><label class="form-check-label" for="prehistoricmode" style="color:#000000;">Prehistoric Mode</label></span></div>`;
-    var westmodeHTML = `<div id="wmDiv" class="row justify-content-center"><span><input class="form-check-input" type="checkbox" value="" id="westmode"><label class="form-check-label" for="westmode" style="color:#000000;">West Mode</label></span></div>`;
+    var spacemodeHTML = `<div id="smDiv" class="row justify-content-center"><span><input class="form-check-input" type="checkbox" value="" id="spacemode"><label class="form-check-label" for="spacemode" style="color:#000000;">Space Mode</label></span></div>`;
     var darkmodeHTML = `<div id="dmDiv" class="row justify-content-center"><span><input class="form-check-input" type="checkbox" value="" id="darkmode"><label class="form-check-label" for="darkmode" style="color:#000000;">Dark Mode</label></span></div>`;
     var lightmodeHTML = `<div id="lmDiv" class="row justify-content-center"><span><input class="form-check-input" type="checkbox" value="" id="lightmode"><label class="form-check-label" for="lightmode" style="color:#000000;">Light Mode</label></span></div>`;
-    var redeemallitemsBtnHTML = `<span class="input-group-btn"><button id="redeemallitemsbtn" class="btn btn-danger">Collect unredeemed items</button></span>`;
     var freeitemBtnHTML = `<span class="input-group-btn"><button id="freeitembtn" class="btn btn-danger">Collect the current free item</button></span>`;
     chatBar.insertAdjacentHTML('beforeend', jokeBtnHTML);
     chatBar.insertAdjacentHTML('beforeend', clapBtnHTML);
     chatBar.insertAdjacentHTML('afterend', balloonoffBtnHTML);
     chatBar.insertAdjacentHTML('afterend', nametagsonoffBtnHTML);
-    chatBar.insertAdjacentHTML('afterend', redeemallitemsBtnHTML);
     chatBar.insertAdjacentHTML('afterend', freeitemBtnHTML);
-    chatBox.insertAdjacentHTML('afterend', mountainmodeHTML);
-    chatBox.insertAdjacentHTML('afterend', sandymodeHTML);
-    chatBox.insertAdjacentHTML('afterend', prehistoricmodeHTML);
-    chatBox.insertAdjacentHTML('afterend', westmodeHTML);
+    chatBox.insertAdjacentHTML('afterend', spacemodeHTML);
     chatBox.insertAdjacentHTML('afterend', darkmodeHTML);
     chatBox.insertAdjacentHTML('afterend', lightmodeHTML);
 
-    if (localStorage.getItem("theme") == "mountain") {
+    if (localStorage.getItem("theme") == "space") {
         document.body.style = "background:url('https://cdn.discordapp.com/attachments/319000727332716544/570223902953963521/Mountain_Background.png');transition:0.5s;";
-        document.getElementById("mountainmode").checked = true;
-    }
-
-    if (localStorage.getItem("theme") == "sandy") {
-        document.body.style = "background:url('https://cdn.discordapp.com/attachments/319000727332716544/570223447981162496/Sandy_Background.png;transition:0.5s;";
-        document.getElementById("sandymode").checked = true;
-    }
-
-    if (localStorage.getItem("theme") == "prehistoric") {
-        document.body.style = "background:url('https://cdn.discordapp.com/attachments/319000727332716544/570222048345849856/Prehistoric_Background.png;transition:0.5s;";
-        document.getElementById("prehistoricmode").checked = true;
-    }
-
-    if (localStorage.getItem("theme") == "west") {
-        document.body.style = "background:url('https://cdn.discordapp.com/attachments/319000727332716544/570225956631871488/West_Background.png;transition:0.5s;";
-        document.getElementById("westmode").checked = true;
+        document.getElementById("spacemode").checked = true;
     }
 
     if (localStorage.getItem("theme") == "dark") {
-        document.body.style = "background:url('https://cdn.discordapp.com/attachments/319000727332716544/570229460876525568/Dark_Background.png;transition:0.5s;";
+        document.body.style = "background-color:rgb(16, 21, 31);transition:0.5s;";
         document.getElementById("darkmode").checked = true;
     }
 
@@ -116,11 +93,11 @@ window.addEventListener('load', function() {
         }, 5000 ); // end delay
     }
 
-    function sendClap() { // Changing 24th April 2019 //
+    function sendClap() {
         var message = document.getElementById("inputMessage").value;
         document.getElementById("inputMessage").value="";
-        message = message.split(" ").join(" 👌 ");
-        message = " 👌 Avengers Engame is COMING! 👌 24th April 2019! 👌 "
+        message = message.split(" ").join(" 👏🏻 ");
+        message = " 👏🏻 "
         console.log(message);
         world.sendMessage(message);
     }
@@ -135,53 +112,17 @@ window.addEventListener('load', function() {
         world.sendMessage("/nicknames"); // Turn name tags on/off
     }
 
-    function mountainmodeToggle() {
-        if(mountainmodeBox.checked == true) {
-            localStorage.setItem("theme", "mountain");
+    function spacemodeToggle() {
+        if(spacemodeBox.checked == true) {
+            localStorage.setItem("theme", "space");
             document.body.style = "background:url('https://cdn.discordapp.com/attachments/319000727332716544/570223902953963521/Mountain_Background.png');transition:1.0s;";
-        } else {
-            localStorage.setItem("theme", "normal");
-            document.body.style = "background:url('https://cdn.discordapp.com/attachments/319000727332716544/570224608196821022/Normal_Background.png');transition:1.0s;";
-        }
-    }
-
-    function sandymodeToggle() {
-        if(sandymodeBox.checked == true) {
-            localStorage.setItem("theme", "sandy");
-            document.body.style = "background:url('https://cdn.discordapp.com/attachments/319000727332716544/570223447981162496/Sandy_Background.png');transition:1.0s;";
-        } else {
-            localStorage.setItem("theme", "normal");
-            document.body.style = "background:url('https://cdn.discordapp.com/attachments/319000727332716544/570224608196821022/Normal_Background.png');transition:1.0s;";
-        }
-    }
-
-    function prehistoricmodeToggle() {
-        if(prehistoricmodeBox.checked == true) {
-            localStorage.setItem("theme", "prehistoric");
-            document.body.style = "background:url('https://cdn.discordapp.com/attachments/319000727332716544/570222048345849856/Prehistoric_Background.png');transition:1.0s;";
-        } else {
-            localStorage.setItem("theme", "normal");
-            document.body.style = "background:url('https://cdn.discordapp.com/attachments/319000727332716544/570224608196821022/Normal_Background.png');transition:1.0s;";
-        }
-    }
-
-    function westmodeToggle() {
-        if(westmodeBox.checked == true) {
-            localStorage.setItem("theme", "west");
-            document.body.style = "background:url('https://cdn.discordapp.com/attachments/319000727332716544/570225956631871488/West_Background.png');transition:1.0s;";
-        } else {
-            localStorage.setItem("theme", "normal");
-            document.body.style = "background:url('https://cdn.discordapp.com/attachments/319000727332716544/570224608196821022/Normal_Background.png');transition:1.0s;";
         }
     }
 
     function darkmodeToggle() {
         if(darkmodeBox.checked == true) {
             localStorage.setItem("theme", "dark");
-            document.body.style = "background:url('https://cdn.discordapp.com/attachments/319000727332716544/570229460876525568/Dark_Background.png');transition:1.0s;";
-        } else {
-            localStorage.setItem("theme", "normal");
-            document.body.style = "background:url('https://cdn.discordapp.com/attachments/319000727332716544/570224608196821022/Normal_Background.png');transition:1.0s;";
+            document.body.style = "background-color:rgb(16, 21, 31);transition:0.5s;";
         }
     }
 
@@ -189,28 +130,7 @@ window.addEventListener('load', function() {
         if(lightmodeBox.checked == true) {
             localStorage.setItem("theme", "light");
             document.body.style = "background:url('https://cdn.discordapp.com/attachments/319000727332716544/570229430509895691/Light_Background.png');transition:1.0s;";
-        } else {
-            localStorage.setItem("theme", "normal");
-            document.body.style = "background:url('https://cdn.discordapp.com/attachments/319000727332716544/570224608196821022/Normal_Background.png');transition:1.0s;";
         }
-    }
-
-    function redeemallitems() {
-        document.getElementById("inputMessage").value="";
-        world.sendMessage("/rocketsnail"); // Redeems Viking Hat
-        world.sendMessage("/FreeItem"); // Redeems Free Item Of The Week
-        world.sendMessage("/boxcritters3d"); // Redeems 3D Glasses
-        world.sendMessage("/goodnight"); // Redeems Sleepy Hat
-        world.sendMessage("/discordcritters2k19"); // Redeems Discord Headphones
-        world.sendMessage("/cute"); // Redeems Pink Toque
-        world.sendMessage("/madeincanada"); // Redeems White Toque
-        world.sendMessage("/oommgames"); // Redeems Red Space Suit
-        world.sendMessage("/boxcritterswiki"); // Redeems Newspaper hat
-        world.sendMessage("/andybulletin"); // Redeems Propeller Hat
-        world.sendMessage("/thekeeper"); // Redeems Party Hat
-        world.sendMessage("/3dboxcritters"); // Redeems Black 3D Glasses
-        world.sendMessage("/bunnyhug"); // Redeems Black 3D Glasses
-        world.sendMessage("/explore"); // Redeems Red Plaid Shirt
     }
 
     function freeitem() {
@@ -237,24 +157,9 @@ window.addEventListener('load', function() {
         nametagsonoffBtn.addEventListener ("click", nametagsonoff, false);
     }
 
-    var mountainmodeBox = document.querySelector ("#mountainmode");
-    if (mountainmodeBox) {
-        mountainmodeBox.addEventListener ("click", mountainmodeToggle, false);
-    }
-
-    var sandymodeBox = document.querySelector ("#sandymode");
-    if (sandymodeBox) {
-        sandymodeBox.addEventListener ("click", sandymodeToggle, false);
-    }
-
-    var prehistoricmodeBox = document.querySelector ("#prehistoricmode");
-    if (prehistoricmodeBox) {
-        prehistoricmodeBox.addEventListener ("click", prehistoricmodeToggle, false);
-    }
-
-    var westmodeBox = document.querySelector ("#westmode");
-    if (westmodeBox) {
-        westmodeBox.addEventListener ("click", westmodeToggle, false);
+    var spacemodeBox = document.querySelector ("#spacemode");
+    if (spacemodeBox) {
+        spacemodeBox.addEventListener ("click", spacemodeToggle, false);
     }
 
     var darkmodeBox = document.querySelector ("#darkmode");
@@ -265,11 +170,6 @@ window.addEventListener('load', function() {
     var lightmodeBox = document.querySelector ("#lightmode");
     if (lightmodeBox) {
         lightmodeBox.addEventListener ("click", lightmodeToggle, false);
-    }
-
-    var redeemallitemsBtn = document.querySelector ("#redeemallitemsbtn"); // Collec all items that are current obtainable ingame. //
-    if (redeemallitemsBtn) {
-        redeemallitemsBtn.addEventListener ("click", redeemallitems, false);
     }
 
     var freeitemBtn = document.querySelector ("#freeitembtn"); // Only collet the item obtainable by the freeitem code. //
