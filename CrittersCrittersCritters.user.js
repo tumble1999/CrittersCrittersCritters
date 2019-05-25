@@ -1,7 +1,9 @@
 // ==UserScript==
 // @name         CrittersCrittersCritters
-// @namespace
-// @version      1.4.5
+// @namespace    http://discord.gg/G3PTYPy
+// @version      1.4.6
+// @updateURL    https://github.com/Blackout03/CrittersCrittersCritters/raw/master/CrittersCrittersCritters.user.js
+// @downloadURL  https://github.com/Blackout03/CrittersCrittersCritters/raw/master/CrittersCrittersCritters.user.js
 // @description  Adds a few new features to BoxCritters to improve your experience!
 // @author       Blackout03, with some help from CrittersPlus made by slaggo
 // @match        https://boxcritters.com/play/*
